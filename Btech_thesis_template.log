@@ -1,4 +1,4 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/Arch Linux)  (format=lualatex 2016.11.22)  3 JAN 2017 20:55
+This is LuaTeX, Version 0.95.0 (TeX Live 2016/Arch Linux)  (format=lualatex 2016.11.22)  3 JAN 2017 21:35
  restricted system commands enabled.
 **Btech_thesis_template.tex
 (./Btech_thesis_template.tex
@@ -214,21 +214,33 @@ LaTeX Info: Redefining \] on input line 2740.
 \@rotdimen=\dimen123
 \@rotbox=\box33
 ))
+(/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count112
+)
+(/usr/share/texmf-dist/tex/generic/xstring/xstring.sty
+(/usr/share/texmf-dist/tex/generic/xstring/xstring.tex
+\@xs@message=\write3
+\integerpart=\count113
+\decimalpart=\count114
+)
+Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
+)
 (./Btech_thesis_template.aux)
 \openout1 = Btech_thesis_template.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -264,19 +276,19 @@ LaTeX Font Info:    ... okay on input line 41.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \selectfont on input line 41.
+LaTeX Info: Redefining \selectfont on input line 51.
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count112
+\scratchcounter=\count115
 \scratchdimen=\dimen124
 \scratchbox=\box34
-\nofMPsegments=\count113
-\nofMParguments=\count114
+\nofMPsegments=\count116
+\nofMParguments=\count117
 \everyMPshowfont=\toks26
-\MPscratchCnt=\count115
+\MPscratchCnt=\count118
 \MPscratchDim=\dimen125
-\MPnumerator=\count116
-\makeMPintoPDFobject=\count117
+\MPnumerator=\count119
+\makeMPintoPDFobject=\count120
 \everyMPtoPDFconversion=\toks27
 ) (/usr/share/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -327,22 +339,22 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 <buie_logo.jpg, id=1, 174.6525pt x 109.91063pt>
 File: buie_logo.jpg Graphic file (type jpg)
  <use buie_logo.jpg>
-Package luatex.def Info: buie_logo.jpg used on input line 64.
+Package luatex.def Info: buie_logo.jpg used on input line 74.
 (luatex.def)             Requested size: 173.44534pt x 109.15732pt.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}<./buie_logo.jpg>] [1]
-Underfull \hbox (badness 10000) in paragraph at lines 95--96
+Underfull \hbox (badness 10000) in paragraph at lines 105--106
 
  []
 
 [2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 135.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 145.
  (/usr/share/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <17.28> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 135.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 145.
  [3] [4] [5] [6] [7]
 (./Btech_thesis_template.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 5.
@@ -353,22 +365,22 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 5.
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ))
-\tf@toc=\write3
+\tf@toc=\write4
 
-\openout3 = Btech_thesis_template.toc
+\openout4 = Btech_thesis_template.toc
  [8
 
 ]
 (./Btech_thesis_template.lof)
-\tf@lof=\write4
+\tf@lof=\write5
 
-\openout4 = Btech_thesis_template.lof
+\openout5 = Btech_thesis_template.lof
  [9
 
 ] (./Btech_thesis_template.lot)
-\tf@lot=\write5
+\tf@lot=\write6
 
-\openout5 = Btech_thesis_template.lot
+\openout6 = Btech_thesis_template.lot
  [10
 
 ]
@@ -378,7 +390,7 @@ Chapter 1.
 ]
 Chapter 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 299--300
+Underfull \hbox (badness 10000) in paragraph at lines 315--316
 
  []
 
@@ -394,7 +406,7 @@ Chapter 4.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 360--361
+Underfull \hbox (badness 10000) in paragraph at lines 376--377
 
  []
 
@@ -405,41 +417,41 @@ Chapter 5.
 <f1.png, id=67, 511.9125pt x 310.91156pt>
 File: f1.png Graphic file (type png)
  <use f1.png>
-Package luatex.def Info: f1.png used on input line 438.
+Package luatex.def Info: f1.png used on input line 454.
 (luatex.def)             Requested size: 307.14987pt x 186.54836pt.
 File: f1.png Graphic file (type png)
  <use f1.png>
-Package luatex.def Info: f1.png used on input line 449.
+Package luatex.def Info: f1.png used on input line 465.
 (luatex.def)             Requested size: 101.17776pt x 86.72255pt.
 
 <f2.png, id=68, 511.9125pt x 310.91156pt>
 File: f2.png Graphic file (type png)
  <use f2.png>
-Package luatex.def Info: f2.png used on input line 451.
+Package luatex.def Info: f2.png used on input line 467.
 (luatex.def)             Requested size: 101.17776pt x 86.72255pt.
 
 <f3.png, id=69, 511.9125pt x 310.91156pt>
 File: f3.png Graphic file (type png)
  <use f3.png>
-Package luatex.def Info: f3.png used on input line 453.
+Package luatex.def Info: f3.png used on input line 469.
 (luatex.def)             Requested size: 101.17776pt x 86.72255pt.
 
 <f4.png, id=70, 511.9125pt x 310.91156pt>
 File: f4.png Graphic file (type png)
  <use f4.png>
-Package luatex.def Info: f4.png used on input line 455.
+Package luatex.def Info: f4.png used on input line 471.
 (luatex.def)             Requested size: 101.17776pt x 86.72255pt.
 
 <f5.png, id=71, 511.9125pt x 310.91156pt>
 File: f5.png Graphic file (type png)
  <use f5.png>
-Package luatex.def Info: f5.png used on input line 457.
+Package luatex.def Info: f5.png used on input line 473.
 (luatex.def)             Requested size: 101.17776pt x 86.72255pt.
 
 <f6.png, id=72, 511.9125pt x 310.91156pt>
 File: f6.png Graphic file (type png)
  <use f6.png>
-Package luatex.def Info: f6.png used on input line 459.
+Package luatex.def Info: f6.png used on input line 475.
 (luatex.def)             Requested size: 101.17776pt x 86.72255pt.
 
 
@@ -463,14 +475,14 @@ Missing character: There is no – (U+2013) in font cmr10!
 ] (./Btech_thesis_template.aux))
 
 Here is how much of LuaTeX's memory you used:
- 3552 strings out of 495118
+ 4119 strings out of 495118
  100000,128383 words of node,token memory allocated
  1241 words of node memory still in use:
    5 hlist, 2 vlist, 2 rule, 120 glue, 1 kern, 50 glue_spec, 1 write nodes
-   avail lists: 2:23,3:76,4:12,5:74,6:931,7:843,8:148,9:213,10:9,11:69
- 6795 multiletter control sequences out of 65536+600000
+   avail lists: 1:2,2:23,3:76,4:12,5:74,6:931,7:843,8:148,9:213,10:9,11:78
+ 7343 multiletter control sequences out of 65536+600000
  48 fonts using 1995915 bytes
- 38i,13n,31p,514b,350s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 38i,13n,31p,805b,350s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/ams
@@ -481,7 +493,7 @@ ype1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.p
 fb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Btech_thesis_template.pdf (23 pages, 220625 bytes).
+Output written on Btech_thesis_template.pdf (23 pages, 219984 bytes).
 
 PDF statistics: 132 PDF objects out of 1000 (max. 8388607)
  87 compressed objects within 1 object stream

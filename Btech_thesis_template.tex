@@ -27,6 +27,9 @@
 \newtheorem{theorem}{Definition}
 \usepackage{subfigure}
 \usepackage{lscape}
+\usepackage{etoolbox}
+\usepackage{xstring}
+
 %\usepackage{datetime}
 
 %\usepackage{fancyhdr}
@@ -37,6 +40,13 @@
 %\lhead{Title}
 %\rfoot{Page \thepage}
 
+% Enter Details about your project here
+\newcommand{\ProjectTitle}{Regression Analysis using Swarm Intelligence}
+\newcommand{\AuthorName}{Arkanayan Shit}
+\newcommand{\SupervisorName}{Tapas Si}
+% Leave unchanged if you don't have co-supervisor
+\newcommand{\CoSupervisorName}{Asim Kumar Mahadani}
+\newcommand{\HODName}{Aloke Roy}
 
 \begin{document}
 
@@ -44,13 +54,13 @@
     \begin{center}
         \vspace*{0.01cm}
         \huge
-        \textbf{Regression Analysis using Swarm Intelligence}
+        \textbf{\ProjectTitle}
         
         
         \vspace{1.5cm}
         
         Submitted by\\
-        \textbf{Arkanayan Shit}
+        \textbf{\AuthorName}
          
          University Roll No.10500113001         
         
@@ -184,27 +194,33 @@
         
         \vspace{1.5cm}
  \justify      
-		This is certified that the work contained in this report entitled, TITLE, by NAME, has been carried out under the supervision of the undersign and this work has not been submitted elsewhere for any other degree.       
+		This is certified that the work contained in this report entitled, \ProjectTitle, by \AuthorName, has been carried out under the supervision of the undersign and this work has not been submitted elsewhere for any other degree.       
         
         \vspace{2.5cm}
  \small       
   \begin{flushleft}
 (Signature of the Supervisor)\\
-Mr. X Y, Assistant Professor, Department of CSE\\
+Mr. \SupervisorName, Assistant Professor, Department of CSE\\
 Bankura Unnayani Institute of Engineering\\
 Bankura, West Bengal
 
 \vspace{1.5cm}
 
-(Signature of the Co-supervisor)\\
-Mr. X Y, Assistant Professor, Department of CSE\\
-Bankura Unnayani Institute of Engineering\\
-Bankura, West Bengal
+% If you have co supervisor, then only it will show
+\IfStrEq{\CoSupervisorName}{CoSupervisorName} {
+
+}{
+	(Signature of the Co-supervisor)\\
+	Mr. \CoSupervisorName, Assistant Professor, Department of CSE\\
+	Bankura Unnayani Institute of Engineering\\
+	Bankura, West Bengal
+}
+
 
 \vspace{1.5cm}
 
 (Signature of the HoD)\\
-Mr. X Y, Associate Professor, Department of CSE\\
+Mr. \HODName, Associate Professor, Department of CSE\\
 Bankura Unnayani Institute of Engineering\\
 Bankura, West Bengal
 
@@ -229,7 +245,7 @@ Bankura, West Bengal
         
         \vspace{1.5cm}
  \justify      
-		I hereby wish to express my sincere gratitude and respect to Assistant Prof. X X, Dept. of CSE, Bankura Unnayani Institute Of Engineering, Bankura under whom I had proud privilege to work. His valuable guidance and encouragement have really led me to the path of completion of this project. Any amount of thanks would not be enough for the valuable guidance of my supervisor. 
+		I hereby wish to express my sincere gratitude and respect to Assistant Prof. \SupervisorName, Dept. of CSE, Bankura Unnayani Institute Of Engineering, Bankura under whom I had proud privilege to work. His valuable guidance and encouragement have really led me to the path of completion of this project. Any amount of thanks would not be enough for the valuable guidance of my supervisor. 
 I would also like to thank all the faculty member of CSE dept. for their devoted help. I also cordially thank all laboratory assistants for their cooperation.
 Finally, I would like to pen down my gratitude towards my family members for their continuous support and encouragement. It would have not been possible to complete my work without their support.
    
