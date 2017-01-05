@@ -10,7 +10,8 @@
 
 \usepackage[a4paper, total={6in, 8in}]{geometry}
 
-
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 
 \usepackage{ragged2e} %--For text alignment
 
@@ -374,7 +375,7 @@ In this regression technique, the best fit line is not a straight line. It is ra
 
 \begin{figure}[!bth]
 	\center
-	\includegraphics[scale=0.5]{images/Polynomial.png}
+	\includegraphics[scale=0.4]{images/Polynomial.png}
 	\caption[Polynomial Regression]{Polynomial Regression \cite{desc:RegressionAnalysis}}
 	\label{fig:ploynomialRegression}
 \end{figure}
@@ -411,119 +412,282 @@ There are multiple benefits of using regression analysis. They are as follows:
 \end{itemize}
 
 \subsubsection{Predicting the Future}
-The most common use of regression in business is to predict events that have yet to occur. Demand analysis, for example, predicts how many units consumers will purchase. Many other key parameters other than demand are dependent variables in regression models, however. Predicting the number of shoppers who will pass in front of a particular billboard or the number of viewers who will watch the Super Bowl may help management assess what to pay for an advertisement. Insurance companies heavily rely on regression analysis to estimate how many policy holders will be involved in accidents or be victims of burglaries, for example.\cite{desc:RegressionApplication}
+The most common use of regression in business is to predict events that have yet to occur. Demand analysis, for example, predicts how many units consumers will purchase. Many other key parameters other than demand are dependent variables in regression models, however. Predicting the number of shoppers who will pass in front of a particular billboard or the number of viewers who will watch the Super Bowl may help management assess what to pay for an advertisement. Insurance companies heavily rely on regression analysis to estimate how many policy holders will be involved in accidents or be victims of burglaries, for example. \cite{desc:RegressionApplication}
 
 \subsubsection{Optimization}
-Another key use of regression models is the optimization of business processes. A factory manager might, for example, build a model to understand the relationship between oven temperature and the shelf life of the cookies baked in those ovens. A company operating a call center may wish to know the relationship between wait times of callers and number of complaints. A fundamental driver of enhanced productivity in business and rapid economic advancement around the globe during the 20th century was the frequent use of statistical tools in manufacturing as well as service industries. Today, managers considers regression an indispensable tool.\cite{desc:RegressionApplication}
+Another key use of regression models is the optimization of business processes. A factory manager might, for example, build a model to understand the relationship between oven temperature and the shelf life of the cookies baked in those ovens. A company operating a call center may wish to know the relationship between wait times of callers and number of complaints. A fundamental driver of enhanced productivity in business and rapid economic advancement around the globe during the 20th century was the frequent use of statistical tools in manufacturing as well as service industries. Today, managers considers regression an indispensable tool. \cite{desc:RegressionApplication}
 
 
 \newpage
-{\bf Mathematical Equations}\\
+\chapter{Methods}
+There are several techniques for regression analysis. Here we are using a few algorithms to analysis. Let us discuss some of those.
 
-You can write your mathematical equation as like in Eq.(\ref{eq:1}).
+\section{Gradient Descent}
+\textbf{Gradient descent} is a first-order iterative optimization algorithm. To find a local minimum of a function using gradient descent, one takes steps proportional to the negative of the gradient (or of the approximate gradient) of the function at the current point. If instead one takes steps proportional to the positive of the gradient, one approaches a local maximum of that function; the procedure is then known as \textbf{gradient ascent}.
 
-\begin{equation}
-\label{eq:1}
-X_{i}^{2}+Y_{j}^{2}=Z_{k}^{2}
-\end{equation}
+\subsubsection{Intuition for Gradient Descent}
+Think of a large bowl like what you would eat cereal out of or store fruit in. This bowl is a plot of the cost function (f).
 
+	\begin{figure}[!bth]
+	\center
+	\includegraphics[scale=0.32]{images/Large-Bowl.jpg}
+	\caption[Large Bowl]{Large Bowl \cite{fig:largeBowl}}
+	\label{fig:largeBowl}
+	\end{figure}
+
+A random position on the surface of the bowl is the cost of the current values of the coefficients (cost). \\
+
+The bottom of the bowl is the cost of the best set of coefficients, the minimum of the function.
+The goal is to continue to try different values for the coefficients, evaluate their cost and select new coefficients that have a slightly better (lower) cost. \\
+
+Repeating this process enough times will lead to the bottom of the bowl and you will know the values of the coefficients that result in the minimum cost. \cite{desc:GradientDescent}
+
+\subsubsection{Method}
+
+
+Gradient descent is based on the observation that if the multi-variable function
+\(F(\mathbf {x} ) \) is defined and differentiable in a neighbourhood of a point \({\displaystyle \mathbf {a} } \) , 
+then \( {\displaystyle F(\mathbf {x} )} \) decreases fastest if one goes from \({\displaystyle \mathbf {a} } \) in the direction of the negative gradient of \({\displaystyle F} \) at \( {\displaystyle \mathbf {a} }\) ,\( {\displaystyle -\nabla F(\mathbf {a} )} \). It follows that, if
+
+\[ {\displaystyle \mathbf {b} =\mathbf {a} -\gamma \nabla F(\mathbf {a} )} \mathbf {b} =\mathbf {a} -\gamma \nabla F(\mathbf {a} ) \]
+
+for \({\displaystyle \gamma }\)   small enough, then $ \displaystyle F(\mathbf {a}) \geq F(\mathbf {b}) $. In other words, the term \({\displaystyle \gamma \nabla F(\mathbf {a} )} \) is subtracted from $ \mathbf {a} $  because we want to move against the gradient, namely 
+down toward the minimum. With this observation in mind, one starts with a guess $ \mathbf {x} _{0} $ for a local minimum of  $ F $, and considers the sequence $ \mathbf {x} _{0},\mathbf {x} _{1},\mathbf {x} _{2},\dots $ such that
+
+\[ \mathbf {x} _{n+1}=\mathbf {x} _{n}-\gamma _{n}\nabla F(\mathbf {x} _{n}),\ n\geq 0. \]
+
+We have
+
+\[ F(\mathbf {x} _{0})\geq F(\mathbf {x} _{1})\geq F(\mathbf {x} _{2})\geq \cdots , \]
+
+so hopefully the sequence  $ (\mathbf {x} _{n}) $ converges to the desired local minimum. Note that the value of the step size $ \gamma  $ is allowed to change at every iteration. With certain assumptions on the function $ F $ (for example,  F convex and $ \nabla F $ Lipschitz) and particular choices of  $ \gamma  $ (e.g., chosen either via a line search that satisfies the Wolfe conditions or the Barzilai-Borwein method shown as following),
+
+\[ {\displaystyle \gamma _{n}={\frac {(\mathbf {x} _{n}-\mathbf {x} _{n-1})^{T}[\nabla F(\mathbf {x} _{n})-\nabla F(\mathbf {x} _{n-1})]}{||\nabla F(\mathbf {x} _{n})-\nabla F(\mathbf {x} _{n-1})||^{2}}}} \]
+
+convergence to a local minimum can be guaranteed. When the function $ F $ is convex, all local minima are also global minima, so in this case gradient descent can converge to the global solution.
+
+This process is illustrated in the adjacent picture. Here $ F $ is assumed to be defined on the plane, and that its graph has a bowl shape. The blue curves are the contour lines, that is, the regions on which the value of $ F $ is constant. A red arrow originating at a point shows the direction of the negative gradient at that point. Note that the (negative) gradient at a point is orthogonal to the contour line going through that point. We see that gradient descent leads us to the bottom of the bowl, that is, to the point where the value of the function $ F $ is minimal.
+\cite{wiki:gradientDescent}
+
+\section{Particle Swarm Optimization}
+\textbf{Particle swarm optimization (PSO)} is a computational method that optimizes a problem by iteratively trying to improve a candidate solution with regard to a given measure of quality. It solves a problem by having a population of candidate solutions, here dubbed particles, and moving these particles around in the search-space according to simple mathematical formulae over the particle's position and velocity. Each particle's movement is influenced by its local best known position, but is also guided toward the best known positions in the search-space, which are updated as better positions are found by other particles. This is expected to move the swarm toward the best solutions. \\
+
+
+PSO is a metaheuristic as it makes few or no assumptions about the problem being optimized and can search very large spaces of candidate solutions. However, metaheuristics such as PSO do not guarantee an optimal solution is ever found. More specifically, PSO does not use the gradient of the problem being optimized, which means PSO does not require that the optimization problem be differentiable as is required by classic optimization methods such as gradient descent and quasi-newton methods. \\
+
+Formally, let $ f: \mathbb{R}^{n} \gets \mathbb{R} $ be the cost function which must be minimized. The function takes a candidate solution as argument in the form of a vector of real numbers and produces a real number as output which indicates the objective function value of the given candidate solution. The gradient of f is not known. The goal is to find a solution a for which $ f(a) \leq f(b) $ for all b in the search-space, which 
+would mean a is the global minimum. Maximization can be performed by considering the function $ h = -f $ instead.
+Let S be the number of particles in the swarm, each having a position $ x_{i} \in \mathbb{R}^{n} $ in the search-space and a velocity $ v_{i} \in \mathbb{R}^{n} $. Let pi be the best known position of particle i and let g be the best known position of the entire swarm. A basic PSO algorithm is then:
 
 \newpage
 
-\chapter{Review}
+\begin{algorithm}
+	\caption{Basic PSO algorithm}\label{algo:pso}
+	\begin{algorithmic}[1]
+		\For{each particle i = 1, ..., S}
+		\State Initialize the particle's position with a random vector: $ x_{i} \sim U(b_{lo}, b_{up}) $
+		\State Initialize the particle's best known position to its initial position: $ p_{i} \gets x_{i} $
+		\If{$ f(p_{i}) < f(g) $}
+		\State update the swarm's best known  position: $ g \gets p_{i} $
+		\EndIf
+		\State Initialize the particle's velocity: $ v_{i} \sim  U(-|b_{up}-b_{lo}|, |b_{up}-b_{lo}|) $
+		\While{a termination criterion is not met}
+		\For{each particle $ i = 1, ..., S $}
+		\For{each dimension $ d = 1, ..., n $}
+		\State Pick random numbers: $ r_{p}, r_{g} \sim U(0,1) $
+		\State          Update particle's velocity: $ v_{i,d} \gets \omega\, v_{i,d} + \phi_{p} r_{p} (p_{i,d}-x_{i,d}) + \phi_{g} r_{g} (g_{d}-x_{i},d) $
+		\State Update the particle's position: $ x_{i} \gets x_{i} + v_{i} $
+		\If{$ f(x_{i}) < f(p_{i}) $}
+		\State Update the particle's best known position: $ p_{i} ← x_{i} $
+		\If{$ f(p_{i}) < f(g) $}
+		\State Update the swarm's best known position: $ g \gets p_{i} $
+		\EndIf
+		\EndIf
+		\EndFor
+		\EndFor
+		\EndWhile
+		\EndFor
+	\end{algorithmic}
+\end{algorithm}
+
+The values $ b_{lo} $ and $ b_{up} $ are respectively the lower and upper boundaries of the search-space. The termination criterion can be number of iterations performed, or a solution with adequate objective function value is found. The parameters \omega, \phi p, and \phi g are selected by the practitioner and control the behaviour and efficacy of the PSO method. \cite{wiki:pso}
+\newpage
+
+
+\section{Differential Evolution}
+n evolutionary computation, differential evolution (DE) is a method that optimizes a problem by iteratively trying to improve a candidate solution with regard to a given measure of quality. Such methods are commonly known as metaheuristics as they make few or no assumptions about the problem being optimized and can search very large spaces of candidate solutions. However, metaheuristics such as DE do not guarantee an optimal solution is ever found. \\
+
+DE is used for multidimensional real-valued functions but does not use the gradient of the problem being optimized, which means DE does not require for the optimization problem to be differentiable as is required by classic optimization methods such as gradient descent and quasi-newton methods. DE can therefore also be used on optimization problems that are not even continuous, are noisy, change over time, etc. \\
+
+DE optimizes a problem by maintaining a population of candidate solutions and creating new candidate solutions by combining existing ones according to its simple formulae, and then keeping whichever candidate solution has the best score or fitness on the optimization problem at hand. In this way the optimization problem is treated as a black box that merely provides a measure of quality given a candidate solution and the gradient is therefore not needed. \\
+
+DE is originally due to Storn and Price. Books have been published on theoretical and practical aspects of using DE in parallel computing, multiobjective optimization, constrained optimization, and the books also contain surveys of application areas. \cite{wiki:de}
+
+\subsubsection{Basics}
+DE is a very simple population based, stochastic function minimizer which is very powerful at the same time. DE managed to finish 3rd at the First International Contest on Evolutionary Computation (1s tICEO) which was held in Nagoya, may 1996. DE turned out to be the best genetic type of algorithm for solving the real-valued test function suite of the 1st ICEO (the first two places were given to non-GA type algorithms which are not universally applicable but solved the test-problems faster than DE). The crucial idea behind DE is a scheme for generating trial parameter vectors. \\
+
+\newpage 
+The flowchart of DE as follows,
+\vspace{30px}
+	\begin{figure}[!bth]
+	\center
+	\includegraphics[scale=1.2]{images/de2.jpg}
+	\caption[Flowchart of Differential Evolution]{Flowchart of Differential Evolution \cite{diag:de}}
+	\label{fig:deFlowchart}
+	\end{figure}
 
 \newpage
-\chapter{Materials \& Methods}
-\section{Example of Table}
+
+\section{Fireworks Algorithm}
+Setting off fireworks is an important creative and joyful activity during Spring Festival in China. At this time, tens of thousands of fireworks explode in the night sky and show beautiful patterns of sparks. Usually, fireworks of different prices and specifications produce entirely different patterns. For example, fireworks of lower price produce less sparks with larger amplitude compared with higher price fireworks and vice versa. The way fireworks explode is similar to the way an individual searches the optimal solution in swarm intelligence algorithms. As a swarm intelligence algorithm, fireworks algorithm consists of four parts, i.e., the explosion operator, mutation operator, mapping rule and selection strategy. The effect of the explosion operator is to generate sparks around fireworks. The number and amplitude of the sparks are governed by the explosion operator. After that, some sparks are produced by mutation operator. The mutation operator utilizes Gaussian operator to produce sparks in Gaussian distribution. Under the effect of the two operators, if the produced spark is not in the feasible region, the mapping rule will map the new generated sparks into the feasible region. To select the sparks for next generation, the selection strategy is used. Fireworks algorithm runs iteratively until it reaches the termination conditions.
+
+\subsection{FA Framework}
+
+When a ﬁrework is set off, a shower of sparks will ﬁll the local space around theﬁrework. In our opinion, the explosion process of a ﬁrework can be viewed asa search in the local space around a speciﬁc point where the ﬁrework is set oﬀthrough the sparks generated in the explosion. When we are asked to ﬁnd a pointxjsatisfying $ f(x_{j})=y $, we can continually set oﬀ ‘ﬁreworks’ in potential spaceuntil one ‘spark’ targets or is fairly near the point xj. Mimicking the process ofsetting oﬀ ﬁreworks, a rough framework of the FA is depicted in \ref{fig:FAFramework}. \\
+
+In the FA, for each generation of explosion, we first select \textit{n} locations, where \textit{n} fireworks are set off. Then after explosion, the locations of sparks are obtained and evaluated. When the optimal location is found, the algorithm stops. Otherwise, \textit{n} other locations are selected from the current sparks and fireworks for the next generation of explosion.
+\\
+From \ref{fig:FAFramework}, it can be seen that the success of the FA lies in a good design
+of the explosion process and a proper method for selecting locations, which are
+respectively elaborated in the further subsections.
+
+\newpage
+	\begin{figure}[!bth]
+	\center
+	\includegraphics[scale=0.5]{images/FA_flowchart.png}
+	\caption[Framework of fireworks algorithm]{Framework of fireworks algorithm \cite{paper:fwa}}
+	\label{fig:FAFramework}
+	\end{figure}
+
+\subsection{Design of Fireworks Explosion}
+Through observing fireworks display, we have found two specific behavior of
+fireworks explosion. When fireworks are well manufactured, numerous sparks are
+generated, and the sparks centralize the explosion center. In this case, we enjoy
+the spectacular display of the fireworks. However, for a bad firework explosion,
+quite few sparks are generated, and the sparks scatter in the space. \\
+
+The two manners are depicted in \ref{fig:FWAtypesofexplosion}. From the standpoint of a search
+algorithm, a good firework denotes that the firework locates in a promising area
+which may be close to the optimal location. Thus, it is proper to utilize more
+sparks to search the local area around the firework. In the contrast, a bad firework
+means the optimal location may be far from where the firework locates. Then,
+the search radius should be larger. In the FA, more sparks are generated and
+the explosion amplitude is smaller for a good firework, compared to a bad one.
+
+	\begin{figure}[!bth]
+	\center
+	\includegraphics[scale=0.5]{images/typesOfFireworksExplosion.png}
+	\caption[Two types of fireworks explosion]{Two types of fireworks explosion \cite{paper:fwa}}
+	\label{fig:FWAtypesofexplosion}
+\end{figure}
+
+\newpage
+
+\textbf{Number of Sparks.} Suppose the FA is designed for the general optimization
+problem:
+	\begin{equation}
+	\label{eq:minimizefx}
+	 Minimize f(x) \in \mathbb{R}, x_{min} \leq x \leq x_{max} ,
+	\end{equation}
+	
+	where $ x = x_{1}, x_{2},...,x_{d} $ denotes a location in the potential space, $ f(x) $ is an
+	objective function, and $ x_{min} $ and $ x_{max}  $ denote the bounds of the potential space.
+	Then the number of sparks generated by each firework $ x_{i} $ is defined as follows.
+	\begin{equation}
+	\label{eq:noOfSpark}
+		s_{i} = m \cdot \dfrac{y_{max} - f(x_{i}) + \epsilon }{\sum_{n}^{i = 1} (y_{max} - f(x_{i})) + \epsilon}
+	\end{equation}
+	
+	where m is a parameter controlling the total number of sparks generated by
+	the n fireworks, $ y_{max} = max(f(x_{i})) (i = 1, 2,...,n) $ is the maximum (worst)
+	value of the objective function among the \textit{n} fireworks, and \epsilon, which denotes the
+	smallest constant in the computer, is utilized to avoid zero-division-error.
+	To avoid overwhelming effects of splendid fireworks, bounds are defined for
+	$ s_{i} $, which is shown in \ref{eq:limitSparks}.
+	
+	\begin{equation}
+	\label{eq:limitSparks}
+		\hat{s_{i}} =  \Bigg\{
+		\begin{tabular}{cc}
+		round(a \cdot m) & $ if s_{i} < am $ \\
+		round(b \cdot m) & if $ s_{i} $ > bm , a < b < 1 \,,\\
+		round($ s_{i} $) & otherwise \\
+		\end{tabular}
+	\end{equation}
+	where \textit{a} and \textit{b} are const parameters.
+
+\newpage
+	
+	\textbf{Amplitude of Explosion.} In contrast to the design of sparks number, the amplitude
+	of a good firework explosion is smaller than that of a bad one. Amplitude
+	of explosion for each firework is defined as follows.
+	
+	\begin{equation}
+		A_{i} = \hat{A} \cdot \frac{f(x_{i}) - y_{min} + \epsilon}{\sum_{n}^{i = 1}(f(x_{i}) - y_{min}) + \epsilon} ,
+	\end{equation}
+	where $ \hat{A} $ denotes the maximum explosion amplitude,and $ y_{min} = min(f(x_{i})) (i =
+	1, 2,...,n) $ is the minimum (best) value of the objective function among the \textit{n}
+	fireworks.
+	
+	
+	\begin{algorithm}
+		\caption{Obtain the location of a spark}\label{algo:fwaLocationofSpark}
+		\begin{algorithmic}[0]
+		\State Initialize the location of the spark: $ \tilde{x}_{j} = x_{i} $ ;
+		\State $ z = round(d \cdot rand(0, 1)) $;
+		\State Randomly select $ z $ dimensions of $ \tilde{x}_{j} $;
+		\State Calculate the displacement: $ h = A_{i} \cdot rand(−1, 1) $;
+		\For{each dimension $ \tilde{x}_{k}^{j} \in $ \{ pre-selected \textit{z} dimensions of $ \tilde{x}_{j} $ \}}
+		\State $ \tilde{x}_{k}^{j} = \tilde{x}_{k}^{j} + h $;
+		\If{$ \tilde{x}_{k}^{j} < \tilde{x}_{min}^{j} $ or $ \tilde{x}_{k}^{j} > \tilde{x}_{k}^{max} $}
+		\State map $ \tilde{x}_{k}^{j} $ to potential space: $ \tilde{x}_{k}^{j} = \tilde{x}_{k}^{min} + | \, \tilde{x}_{k}^{j} \, | \, \%(\tilde{x}_{k}^{max} - \tilde{x}_{k}^{min}) $;
+		\EndIf
+		\EndFor
+		\end{algorithmic}
+	\end{algorithm}
+
+	\begin{algorithm}
+	\caption{ Obtain the location of a specific spark}
+	\label{algo:fwaLocationOfSpecificSpark}
+	\begin{algorithmic}[0]
+		\State Initialize the location of the spark: $ \tilde{x}_{j} = x_{i} $ ;
+		\State $ z = round(d \cdot rand(0, 1)) $;
+		\State Randomly select $ z $ dimensions of $ \tilde{x}_{j} $;
+		\State Calculate the coefficient of Gaussian explosion: $ g $ = Gaussian(1, 1);
+		\For{each dimension $ \tilde{x}_{k}^{j} \in $ \{ pre-selected \textit{z} dimensions of $ \tilde{x}_{j} $ \}}
+		\State $ \tilde{x}_{k}^{j} = \tilde{x}_{k}^{j} \cdot g $;
+		\If{$ \tilde{x}_{k}^{j} < \tilde{x}_{min}^{j} $ or $ \tilde{x}_{k}^{j} > \tilde{x}_{k}^{max} $}
+		\State map $ \tilde{x}_{k}^{j} $ to potential space: $ \tilde{x}_{k}^{j} = \tilde{x}_{k}^{min} + | \, \tilde{x}_{k}^{j} \, | \, \%(\tilde{x}_{k}^{max} - \tilde{x}_{k}^{min}) $;
+		\EndIf
+		\EndFor
+	\end{algorithmic}
+\end{algorithm}
 
 
+	\begin{algorithm}
+	\caption{ Framework of the FA}
+	\label{algo:fwaFramework}
+	\begin{algorithmic}[0]
+		\State Randomly select $ n $ locations for fireworks;
+		\While{stop criteria = false}
+		\State Set off $ n $ fireworks respectively at the $ n $ locations:
+		\For{each firework $ x_{i} $}
+		\State Calculate the number of sparks that the firework yields: $ \tilde{S}_{i} $, according to Eq.\ref{eq:limitSparks}
+		\State Obtain locations of $ \tilde{S}_{i} $ sparks of the firework $ x_{i} $ using Algorithm \ref{algo:fwaLocationofSpark}
+		\EndFor
+		\For{$ k = 1:\hat{m} $}
+		\State Randomly select a firework $ x_{j} $ ;
+		\State Generate a specific spark for the firework using Algorithm \ref{algo:fwaLocationOfSpecificSpark};
+		\EndFor
+		\State Select the best location and keep it for next explosion generation;
+		\State Randomly select n − 1 locations from the two types of sparks and the current
+			fireworks according to the probability;
+		\EndWhile
+	\end{algorithmic}
+\end{algorithm}
+	
+\newpage
 
-\begin{table}[h]
-\centering
-\caption{Table to test captions and labels}
-\label{table:1}
-\begin{tabular}{ |c| c| c| }
-\hline
- cell1 & cell2 & cell3 \\ 
- \hline
- cell4 & cell5 & cell6 \\ 
- \hline 
- cell7 & cell8 & cell9   \\ 
- \hline
-\end{tabular}
-
-\end{table}
-
-
-
-
-The table \ref{table:2} is an example of referenced \LaTeX elements.
-\begin{sidewaystable}[h]
-%\begin{table}[]
-\centering
-\caption{Table to test captions and labels}
-\label{table:2}
-\begin{tabular}{ |c| c| c| }
-\hline
- cell1 & cell2 & cell3 \\ 
- \hline
- cell4 & cell5 & cell6 \\ 
- \hline 
- cell7 & cell8 & cell9   \\ 
- \hline
-\end{tabular}
-
-%\end{table}
-\end{sidewaystable}
-
-
-
-
-{\bf Multi-page tables}\\
-
-If you have to insert a very long table, which takes up two or more pages in your document, use the longtable package. First, add to the preamble the line
-
-\begin{verbatim}
-\usepackage{longtable}
-\end{verbatim}
-
-
-\begin{longtable}[c]{| c | c |}
- \caption{Long table caption.\label{long}}\\
- 
- \hline
- \multicolumn{2}{| c |}{Begin of Table}\\
- \hline
- Something & something else\\
- \hline
- \endfirsthead
- 
- \hline
- \multicolumn{2}{|c|}{Continuation of Table \ref{long}}\\
- \hline
- Something & something else\\
- \hline
- \endhead
- 
- \hline
- \endfoot
- 
- \hline
- \multicolumn{2}{| c |}{End of Table}\\
- \hline\hline
- \endlastfoot
- 
- Lots of lines & like this\\
- Lots of lines & like this\\
- Lots of lines & like this\\
- Lots of lines & like this\\
- Lots of lines & like this\\
- Lots of lines & like this\\
- Lots of lines & like this\\
- Lots of lines & like this\\
- ...
- Lots of lines & like this\\
- \end{longtable}
 
 %The table \ref{table:3} is an example of referenced \LaTeX elements in landscape.
 %
@@ -612,6 +776,29 @@ Here you can outline the future scopes of your work..........
 
 \bibitem{desc:RegressionApplication}
 \url{http://smallbusiness.chron.com/application-regression-analysis-business-77200.html}
+
+\bibitem{desc:GradientDescent}
+\url{http://machinelearningmastery.com/gradient-descent-for-machine-learning/}
+
+\bibitem{fig:largeBowl}
+\href{https://www.flickr.com/photos/wwarby/4046737583/}{William Warby}
+
+\bibitem{wiki:gradientDescent}
+\url{https://en.wikipedia.org/wiki/Gradient_descent}
+
+\bibitem{wiki:pso}
+\url{https://en.wikipedia.org/wiki/Particle_swarm_optimization}
+
+\bibitem{diag:de}
+\url{http://www1.icsi.berkeley.edu/~storn/code.html}
+
+\bibitem{wiki:de}
+\url{https://en.wikipedia.org/wiki/Differential_evolution}
+
+\bibitem{paper:fwa}
+Y. Tan, and Y. Zhu, Firework Algorithm for Optimization, In: Y. Tan et
+al.(Eds): ICSI 2010, Part I, LNCS 6145, pp.355–364, 2010, Springer-
+Verlag Berlin Heidelberg 2010.
 
 \end{thebibliography}
 
