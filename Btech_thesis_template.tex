@@ -716,19 +716,97 @@ problem:
 
 \chapter{Results \& Discussion}
 
-The graph is given in Fig.~\ref{fig:logo}.
+\section{Data Set Information}
 
-\begin{figure}[!bth]
-\center
-\label{fig:logo}
-\includegraphics[scale=0.6]{f1.png}
-\caption{Graph}
-\end{figure}
+\subsection{Concrete Slump Test}
+\begin{tabular}{l l}
+	Data Set Characteristics:  & Multivariate \\
+	Associated Tasks: & Regression  \\
+	Attribute Characteristics: & Real \\
+	Number of Instances: & 103 \\
+	Number of Attributes: & 10 \\
+\end{tabular}
 
+\subsection{Housing Data Set}
+\begin{tabular}{l l}
+	Data Set Characteristics:  & Multivariate \\
+	Associated Tasks: & Regression  \\
+	Attribute Characteristics: & Categorical, Integer, Real \\
+	Number of Instances: & 506 \\
+	Number of Attributes: & 14 \\
+\end{tabular}
 
-If you need to place multiple images all together, use this...
+\subsection{Challenger USA Space Shuttle O-Ring Data Set }
+\begin{tabular}{l l}
+	Data Set Characteristics:  & Multivariate \\
+	Associated Tasks: & Regression  \\
+	Attribute Characteristics: & Integer \\
+	Number of Instances: & 23 \\
+	Number of Attributes: & 4 \\
+\end{tabular}
 
+\subsection{Concrete Compressive Strength Data Set}
+\begin{tabular}{l l}
+	Data Set Characteristics:  & Multivariate \\
+	Associated Tasks: & Regression  \\
+	Attribute Characteristics: & Real \\
+	Number of Instances: & 1030 \\
+	Number of Attributes: & 9 \\
+\end{tabular}
 
+\subsection{Red Wine Quality Data Set}
+\begin{tabular}{l l}
+	Data Set Characteristics:  & Multivariate \\
+	Associated Tasks: & Classification, Regression  \\
+	Attribute Characteristics: & Real \\
+	Number of Instances: & 1599 \\
+	Number of Attributes: & 12 \\
+\end{tabular}
+
+\subsection{White Wine Quality Data Set}
+\begin{tabular}{l l}
+	Data Set Characteristics:  & Multivariate \\
+	Associated Tasks: & Classification, Regression  \\
+	Attribute Characteristics: & Real \\
+	Number of Instances: & 4898 \\
+	Number of Attributes: & 12 \\
+\end{tabular}
+
+\section{Parameter Settings}
+\subsection{Gradient Descent}
+\begin{tabular}{l l}
+	Learning Rate \alpha: & 0.6 \\
+	Number of function evaluations: & 2000 \\ 
+\end{tabular}
+
+\subsection{Particle Swarm Optimization}
+\begin{tabular}{l l}
+	Number of swarms: & 10 \\
+	Number of function evaluations: & 2000 \\ 
+	Inertia weight = & 0.729 \\
+	c1, c2 = & 1.44945 \\
+	$ x_{max} $ = & 1 \\
+	$ x_{min} $ = & 0 \\
+\end{tabular}
+
+\subsection{Differential Evolution}
+\begin{tabular}{l l}
+	 Population \textit{N} : & 10\\
+	Number of function evaluations: & 2000 \\ 
+	Crossover Rate: & 0.8 \\
+	Scale Factor: & 0.9 \\
+\end{tabular}
+
+\subsection{Fireworks}
+\begin{tabular}{l l}
+	Initial Population \textit{N} : & 10\\
+	Number of function evaluations: & 2000 \\ 
+	\textit{a}: & 0.04 \\
+	\textit{b}: & 0.8 \\
+	$ \hat{m} $: & 10 \\
+	\textit{m}: & 50 \\
+	Maximum Amplitude ($ \hat{A} $): & 40 \\
+\end{tabular}
 \begin{figure}[!h]
   \centering
    \begin{tabular}{l l l}
