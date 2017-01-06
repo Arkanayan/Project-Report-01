@@ -32,6 +32,9 @@
 \usepackage{etoolbox}
 \usepackage{xstring}
 \usepackage{textcomp}
+\usepackage{rotating}
+\usepackage{booktabs}
+\usepackage{siunitx}
 
 %\usepackage{datetime}
 
@@ -422,7 +425,7 @@ Another key use of regression models is the optimization of business processes. 
 \chapter{Methods}
 There are several techniques for regression analysis. Here we are using a few algorithms to analysis. Let us discuss some of those.
 
-\section{Gradient Descent}
+\section{Gradient Descent} \label{chap:GD}
 \textbf{Gradient descent} is a first-order iterative optimization algorithm. To find a local minimum of a function using gradient descent, one takes steps proportional to the negative of the gradient (or of the approximate gradient) of the function at the current point. If instead one takes steps proportional to the positive of the gradient, one approaches a local maximum of that function; the procedure is then known as \textbf{gradient ascent}.
 
 \subsubsection{Intuition for Gradient Descent}
@@ -799,7 +802,7 @@ problem:
 
 \subsection{Fireworks}
 \begin{tabular}{l l}
-	Initial Population \textit{N} : & 10\\
+	Initial Population (\textit{N}) : & 10\\
 	Number of function evaluations: & 2000 \\ 
 	\textit{a}: & 0.04 \\
 	\textit{b}: & 0.8 \\
@@ -807,42 +810,57 @@ problem:
 	\textit{m}: & 50 \\
 	Maximum Amplitude ($ \hat{A} $): & 40 \\
 \end{tabular}
-\begin{figure}[!h]
-  \centering
-   \begin{tabular}{l l l}
-  \subfigure[\label{db1mri1}]{\includegraphics[width=1.4in,height=1.2in]{f1.png}}   &
-   
-  \subfigure[\label{db1mri2}]{\includegraphics[width=1.4in,height=1.2in]{f2.png}}   &
- 
-  \subfigure[]{\includegraphics[width=1.4in,height=1.2in]{f3.png}}  \\
 
-  \subfigure[]{\includegraphics[width=1.4in,height=1.2in]{f4.png}}   &
- 
-  \subfigure[]{\includegraphics[width=1.4in,height=1.2in]{f5.png}}   &
+\newpage
 
-  \subfigure[]{\includegraphics[width=1.4in,height=1.2in]{f6.png}}   \\
-   \end{tabular}   
-  \caption{put the caption}.
- \label{fig:db1}
-\end{figure}
+\subsection{Results}
+\subsubsection{Training Set}
 
+\begin{table}[!htbp]
+	\centering
+	\caption{Result Table}
+	\label{tab:ResultTable}
+	\sisetup{round-mode=places,round-precision=4} 
+\begin{tabular}{@{}lSSlSSl@{}}
+	\toprule
+	Datasets                              & \multicolumn{3}{c}{GD}                           & \multicolumn{2}{c}{PSO}              &         \\ \midrule
+	& \text{Mean}              & \text{Std}               & \text{Time}     & \text{Mean}             & \text{Std}               & \text{Time}    \\
+	Slump Test                            & 2.11575119732343  & 0.109342267127141 & 3.40E-05 & 9.12803953216337 & 0.422076958348553 & 1.5E-05 \\
+	Housing Dataset                       & 29.2290820008102  & 1.09103095261502  & 1.5E-05  & 36.314726113291  & 2.15992764536123  & 1.6E-05 \\
+	O-ring Dataset                        & 0.002144357727271 & 0.011384143971044 & 1.5E-05  & 23.1369782424306 & 2.06071867218733  & 2.4E-05 \\
+	Concrete Dataset & 83.9624336397099  & 1.17531980535434  & 1.4E-05  & 88.7812657199354 & 0.997033380502257 & 3.6E-05 \\
+	Red Wine Quality                      & 128.156212682023  & 1.38911792157694  & 1.4E-05  & 139.684735932487 & 1.94112172925811  & 1.6E-05 \\
+	White Wine Quality                    & 380.693571742112  & 2.56592649760963  & 1.4E-05  & 440.368621857887 & 6.44617981000869  & 2E-05  
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+	\centering
+	\caption{Continuation of Result Table}
+	\label{tab:ResultTableCont}
+	\sisetup{round-mode=places,round-precision=4} 
+	\begin{tabular}{@{}lSSlSSl@{}}
+		\toprule
+		Datasets           & \multicolumn{3}{c}{DE}                         & \multicolumn{3}{c}{FWA}                         \\ \midrule
+		& \text{Mean}             & \text{Std}              & \text{Time}     & \text{Mean}             & \text{Std}               & \text{Time}     \\
+		Slump Test         & 8.24659237311693 & 2.74694162223394 & 0.018889 & 16.6107653437399 & 0.613809306739308 & 3.695438 \\
+		Housing Dataset    & 58.8853873030071 & 2.72842625333641 & 0.075811 & 44.653822098153  & 2.72842625333641  & 3.410051 \\
+		O-ring Dataset     & 0.03666783748193 & 1.75438567105428 & 0.018523 & 57.1095959596118 & 1.75438567105428  & 3.524133 \\
+		Concrete Dataset   & 86.7841713943101 & 5.05542081881594 & 0.075699 & 97.2449368583716 & 5.05542081881594  & 3.110807 \\
+		Red Wine Quality   & 141.970706333197 & 4.26518935825816 & 0.065636 & 142.236598083891 & 4.26518935825816  & 3.853955 \\
+		White Wine Quality & 409.223840576782 & 4.01944402137273 & 0.129604 & 406.197996776574 & 4.01944402137273  & 4.339977
+	\end{tabular}
+\end{table}
+
+\subsection{Discussion}
+From the above Table \ref{tab:ResultTable} and \ref{tab:ResultTableCont} it can be seen that for almost all the data sets Gradient Descent Chapter.\ref{chap:GD} trumps all of the other algorithms. The error is the lowest of all the other algorithms. Also the runtime complexity is several magnitude lower for the same 2000 function evaluations. Also the standard deviation is lowest among them. That signifies robustness. 
 
 
 \newpage
 
 \chapter{Conclusions}
+In the above pages, 4 different algorithms (Gradient Descent, Particle Swarm Optimization, Differential Evolution, Fireworks Algorithm) are compared against 5 data sets. It is found that despite having simplest implementation and technique, Gradient Descent performs best among the rest of the algorithms. It is also more efficient, more robust and have less complexity.
 
-\newpage
-
-\chapter{Future Works}
-Here you can outline the future scopes of your work..........
-\newpage
-
-\chapter*{List of Publications}
-\begin{enumerate}
-\item Author's name, Title, Conference, date, place, year, pp.~xx-xx.
-\item Author's name, Title, Journal, Vol~X, No.~X, Year, pp.~xx-xx.
-\end{enumerate}
 \newpage
 \begin{thebibliography}{50}
 	
