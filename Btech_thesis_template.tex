@@ -7,6 +7,7 @@
 
 \usepackage{hyperref}
 
+\usepackage{pdflscape}
 
 \usepackage[a4paper, total={6in, 8in}]{geometry}
 
@@ -35,6 +36,8 @@
 \usepackage{rotating}
 \usepackage{booktabs}
 \usepackage{siunitx}
+\usepackage{adjustbox}
+
 
 %\usepackage{datetime}
 
@@ -317,7 +320,7 @@ Regression analysis is an important tool for modelling and analyzing data. Here,
 
 There are quite a few algorithms that are used for regression analysis. There is one classical method named Gradient Descent. Also swarm intelligence is gaining popularity among researchers for regression analysis. Some of the algorithms that are based on swarm intelligence are Particle Swarm Optimization, Differential Evolution, Fireworks Algorithm. 
 
-Here I am doing comparative study of these algorithms with fireworks algorithm against six data sets.
+Here I am doing comparative study of these algorithms with fireworks algorithm on six real world data sets.
 \section{Applications of Regression Analysis}
 
 Regression analysis estimates the relationship between two or more variables. Let’s understand this with an easy example: \\
@@ -816,55 +819,94 @@ In this this work, we have applied the proposed method on six well known real wo
 	Maximum Amplitude ($ \hat{A} $): & 40 \\
 \end{tabular}
 
-\newpage
 
-\subsection{Results}
-\subsubsection{Training Set}
+\section{Results}
+%
+%\begin{table}[!htbp]
+%	\centering
+%	\caption{Result Table}
+%	\label{tab:ResultTable}
+%	\sisetup{round-mode=places,round-precision=4} 
+%\begin{tabular}{@{}lSSlSSl@{}}
+%	\toprule
+%	Datasets                              & \multicolumn{3}{c}{GD}                           & \multicolumn{2}{c}{PSO}              &         \\ \midrule
+%	& \text{Mean}              & \text{Std}               & \text{Time}     & \text{Mean}             & \text{Std}               & \text{Time}    \\
+%	Slump Test                            & 2.11575119732343  & 0.109342267127141 & 3.40E-05 & 9.12803953216337 & 0.422076958348553 & 1.5E-05 \\
+%	Housing Dataset                       & 29.2290820008102  & 1.09103095261502  & 1.5E-05  & 36.314726113291  & 2.15992764536123  & 1.6E-05 \\
+%	O-ring Dataset                        & 0.002144357727271 & 0.011384143971044 & 1.5E-05  & 23.1369782424306 & 2.06071867218733  & 2.4E-05 \\
+%	Concrete Dataset & 83.9624336397099  & 1.17531980535434  & 1.4E-05  & 88.7812657199354 & 0.997033380502257 & 3.6E-05 \\
+%	Red Wine Quality                      & 128.156212682023  & 1.38911792157694  & 1.4E-05  & 139.684735932487 & 1.94112172925811  & 1.6E-05 \\
+%	White Wine Quality                    & 380.693571742112  & 2.56592649760963  & 1.4E-05  & 440.368621857887 & 6.44617981000869  & 2E-05  
+%\end{tabular}
+%\end{table}
 
-\begin{table}[!htbp]
+
+
+\begin{sidewaystable}[!htbp]
 	\centering
-	\caption{Result Table}
-	\label{tab:ResultTable}
+	\caption{Training Result Table}
+	\label{tab:TrainingResultTable}
 	\sisetup{round-mode=places,round-precision=4} 
-\begin{tabular}{@{}lSSlSSl@{}}
-	\toprule
-	Datasets                              & \multicolumn{3}{c}{GD}                           & \multicolumn{2}{c}{PSO}              &         \\ \midrule
-	& \text{Mean}              & \text{Std}               & \text{Time}     & \text{Mean}             & \text{Std}               & \text{Time}    \\
-	Slump Test                            & 2.11575119732343  & 0.109342267127141 & 3.40E-05 & 9.12803953216337 & 0.422076958348553 & 1.5E-05 \\
-	Housing Dataset                       & 29.2290820008102  & 1.09103095261502  & 1.5E-05  & 36.314726113291  & 2.15992764536123  & 1.6E-05 \\
-	O-ring Dataset                        & 0.002144357727271 & 0.011384143971044 & 1.5E-05  & 23.1369782424306 & 2.06071867218733  & 2.4E-05 \\
-	Concrete Dataset & 83.9624336397099  & 1.17531980535434  & 1.4E-05  & 88.7812657199354 & 0.997033380502257 & 3.6E-05 \\
-	Red Wine Quality                      & 128.156212682023  & 1.38911792157694  & 1.4E-05  & 139.684735932487 & 1.94112172925811  & 1.6E-05 \\
-	White Wine Quality                    & 380.693571742112  & 2.56592649760963  & 1.4E-05  & 440.368621857887 & 6.44617981000869  & 2E-05  
-\end{tabular}
-\end{table}
+	\begin{tabular}{|l|S|S|S|S|S|S|S|S|}
+		\hline
+		Datasets           & \multicolumn{2}{c|}{GD}                              & \multicolumn{2}{c|}{PSO}                             & \multicolumn{2}{c|}{DE}                              & \multicolumn{2}{c|}{FWA}                             \\ \hline
+		& \multicolumn{1}{c|}{Mean} & \multicolumn{1}{c|}{Std} & \multicolumn{1}{c|}{Mean} & \multicolumn{1}{c|}{Std} & \multicolumn{1}{c|}{Mean} & \multicolumn{1}{c|}{Std} & \multicolumn{1}{c|}{Mean} & \multicolumn{1}{c|}{Std} \\ \hline
+		Slump Test         & 2.11575119732343          & 0.109342267127141        & 9.12803953216337          & 0.422076958348553        & 8.24659237311693          & 2.74694162223394         & 16.6107653437399          & 0.613809306739308        \\ \hline
+		Housing Dataset    & 29.2290820008102          & 1.09103095261502         & 36.314726113291           & 2.15992764536123         & 58.8853873030071          & 2.72842625333641         & 44.653822098153           & 2.72842625333641         \\ \hline
+		O-ring Dataset     & 0.002144357727271         & 0.011384143971044        & 23.1369782424306          & 2.06071867218733         & 0.03666783748193          & 1.75438567105428         & 57.1095959596118          & 1.75438567105428         \\ \hline
+		Concrete Dataset   & 83.9624336397099          & 1.17531980535434         & 88.7812657199354          & 0.997033380502257        & 86.7841713943101          & 5.05542081881594         & 97.2449368583716          & 5.05542081881594         \\ \hline
+		Red Wine Quality   & 128.156212682023          & 1.38911792157694         & 139.684735932487          & 1.94112172925811         & 141.970706333197          & 4.26518935825816         & 142.236598083891          & 4.26518935825816         \\ \hline
+		White Wine Quality & 380.693571742112          & 2.56592649760963         & 440.368621857887          & 6.44617981000869         & 409.223840576782          & 4.01944402137273         & 406.197996776574          & 4.01944402137273         \\ \hline
+	\end{tabular}
+\end{sidewaystable}
 
-\begin{table}[!htbp]
+
+\begin{sidewaystable}[]
 	\centering
-	\caption{Continuation of Result Table}
-	\label{tab:ResultTableCont}
+	\caption{Testing Result Table}
+	\label{tab:TestingResultTable}
 	\sisetup{round-mode=places,round-precision=4} 
-	\begin{tabular}{@{}lSSlSSl@{}}
-		\toprule
-		Datasets           & \multicolumn{3}{c}{DE}                         & \multicolumn{3}{c}{FWA}                         \\ \midrule
-		& \text{Mean}             & \text{Std}              & \text{Time}     & \text{Mean}             & \text{Std}               & \text{Time}     \\
-		Slump Test         & 8.24659237311693 & 2.74694162223394 & 0.018889 & 16.6107653437399 & 0.613809306739308 & 3.695438 \\
-		Housing Dataset    & 58.8853873030071 & 2.72842625333641 & 0.075811 & 44.653822098153  & 2.72842625333641  & 3.410051 \\
-		O-ring Dataset     & 0.03666783748193 & 1.75438567105428 & 0.018523 & 57.1095959596118 & 1.75438567105428  & 3.524133 \\
-		Concrete Dataset   & 86.7841713943101 & 5.05542081881594 & 0.075699 & 97.2449368583716 & 5.05542081881594  & 3.110807 \\
-		Red Wine Quality   & 141.970706333197 & 4.26518935825816 & 0.065636 & 142.236598083891 & 4.26518935825816  & 3.853955 \\
-		White Wine Quality & 409.223840576782 & 4.01944402137273 & 0.129604 & 406.197996776574 & 4.01944402137273  & 4.339977
+	\begin{tabular}{|l|S|S|S|S|S|S|S|S|}
+		\hline
+		Datasets           & \multicolumn{2}{c|}{GD}                              & \multicolumn{2}{c|}{PSO}                             & \multicolumn{2}{c|}{DE}                              & \multicolumn{2}{c|}{FWA}                             \\ \hline
+		& \multicolumn{1}{c|}{Mean} & \multicolumn{1}{c|}{Std} & \multicolumn{1}{c|}{Mean} & \multicolumn{1}{c|}{Std} & \multicolumn{1}{c|}{Mean} & \multicolumn{1}{c|}{Std} & \multicolumn{1}{c|}{Mean} & \multicolumn{1}{c|}{Std} \\ \hline
+		Slump Test         & 0.376588678249079         & 0.084328007091616        & 1.91123888806968          & 0.372416136745666        & 1.82865571449221          & 0.569166261162725        & 3.90141528684277          & 0.566704676638853        \\ \hline
+		Housing Dataset    & 7.19002329998541          & 0.950722847584805        & 8.74328820920911          & 0.852981879393061        & 12.1576344646147          & 2.91483873700179         & 10.5913237773362          & 1.4469184293803          \\ \hline
+		O-ring Dataset     & 3.56279915817955E-05      & 0.000181673710118        & 2.34290153895234          & 1.67631697718237         & 0.006139442643736         & 3.56287264842681         & 12.5372781962533          & 1.75438567104832         \\ \hline
+		Concrete Dataset   & 20.778167031889           & 1.15007236458991         & 22.3450978471395          & 1.68059536250723         & 19.9449935869867          & 6.20456579806509         & 21.913419217314           & 1.54262800107822         \\ \hline
+		Red Wine Quality   & 31.3149440179637          & 1.37652368855127         & 34.418517611704           & 1.52322284198711         & 33.1242032468265          & 9.40622260111572         & 32.5129611053592          & 1.70205752883467         \\ \hline
+		White Wine Quality & 95.4184288188192          & 2.48154583323414         & 108.453666239156          & 3.85948906256355         & 95.297119491466           & 27.4520909197518         & 93.385871804446           & 2.53836177790683         \\ \hline
+	\end{tabular}
+\end{sidewaystable}
+
+\begin{table}[]
+	\centering
+	\caption{Run Time}
+	\label{tab:RunningTime}
+	\begin{tabular}{|l|l|l|l|l|}
+		\hline
+		Datasets                              & GD       & PSO      & DE       & FWA      \\ \hline
+		& Time     & Time     & Time     & Time     \\ \hline
+		Slump Test                            & 3.40E-05 & 1.50E-05 & 0.018889 & 3.695438 \\ \hline
+		Housing Dataset                       & 1.50E-05 & 1.60E-05 & 0.075811 & 3.410051 \\ \hline
+		O-ring Dataset                        & 1.50E-05 & 2.40E-05 & 0.018523 & 3.524133 \\ \hline
+		Concrete Compressive Strength Dataset & 1.40E-05 & 3.60E-05 & 0.075699 & 3.110807 \\ \hline
+		Red Wine Quality                      & 1.40E-05 & 1.60E-05 & 0.065636 & 3.853955 \\ \hline
+		White Wine Quality                    & 1.40E-05 & 2.00E-05 & 0.129604 & 4.339977 \\ \hline
 	\end{tabular}
 \end{table}
 
+\newpage
 \subsection{Discussion}
-From the above Table \ref{tab:ResultTable} and \ref{tab:ResultTableCont} it can be seen that for almost all the data sets Gradient Descent Chapter.\ref{chap:GD} trumps all of the other algorithms. The error is the lowest of all the other algorithms. Also the runtime complexity is several magnitude lower for the same 2000 function evaluations. Also the standard deviation is lowest among them. That signifies robustness. 
+From the above Table \ref{tab:TrainingResultTable} it can be seen that for almost all the data sets Gradient Descent Chapter.\ref{chap:GD} trumps all of the other algorithms. The error is the lowest of all the other algorithms. Also from the run time table \ref{tab:RunningTime} it is evident that  the runtime complexity of Gradient Descent is several magnitude lower for the same 2000 function evaluations. Also the standard deviation is lowest among them. That signifies robustness. 
+
+The above is also evident for Testing Result Table \ref{tab:TestingResultTable}.
 
 
 \newpage
 
 \chapter{Conclusions}
-In the above pages, 4 different algorithms (Gradient Descent, Particle Swarm Optimization, Differential Evolution, Fireworks Algorithm) are compared against 5 data sets. It is found that despite having simplest implementation and technique, Gradient Descent performs best among the rest of the algorithms. It is also more efficient, more robust and have less complexity.
+In the above pages, four different algorithms (Gradient Descent, Particle Swarm Optimization, Differential Evolution, Fireworks Algorithm) are compared against six data sets. It is found that despite having simplest implementation and technique, Gradient Descent performs best among the rest of the algorithms. It is also more efficient, more robust and have less complexity.
 
 \newpage
 \begin{thebibliography}{50}
