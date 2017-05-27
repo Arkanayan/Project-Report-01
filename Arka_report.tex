@@ -15,7 +15,7 @@
 \usepackage{algpseudocode}
 
 \usepackage{ragged2e} %--For text alignment
-
+\usepackage{enumitem}
 \newenvironment{frontmatter}{}{\maketitle}
 
 \usepackage{longtable}
@@ -696,9 +696,56 @@ problem:
 		\EndWhile
 	\end{algorithmic}
 \end{algorithm}
-	
-\newpage
 
+\newpage
+\goodbreak
+
+\section{Firework Algorithm using Adaptive transfer function}
+The Fireworks algorithm is simulating the explosion process of fireworks. Each location of fireworks represents a solution in the search space. When firework is set
+off, a shower of sparks fill the local space around the firework.
+This explosion process is mimicked by Fireworks Algorithm. But FWA has several drawbacks and they are as follows: (i) the amplitude of explosion sparks generated from best fireworks is closed to zero and that leads to bad exploitation of best fireworks. (ii) in FWA, a Gaussian random number with zero mean and one standard deviation is multiplied with randomly selected fireworks to generate the ‘Gaussian Sparks’. But, if the Gaussian random number is closed to zero, then the muted solution moves towards the origin and leads to poor solution when global optima is located far away from the origin. (iii) it has high computational cost. In recent time, several improved Fireworks Algorithms are developed to overcome these drawbacks.
+
+
+The IFWABS algorithm uses a transfer function designed to map the sequence number in the sorted front of fireworks to a function value which is used to better calculate the number of explosion sparks as well as their amplitudes for the fireworks. This paper proposes an adaptive transfer function in which the differences in fitnesses of fireworks are used instead of sequence number in the sorted front. \cite{paper:fwa-atf}
+
+\subsection{FWA-ATF Framework}
+The proposed Fireworks algorithm with adaptive transfer function (FWA-ATF) is the improvement of the IFWABS algorithm. The two improvements are: (i) Adaptive Transfer Function (ii) different displacements for different dimensions of the fireworks while generating the ‘Explosion Sparks’.
+
+\subsubsection{\textit{A. Adaptive Transfer Function}}
+In the IFWABS, the transfer function uses the sequence number in the sorted front with respect to the fitness values of the fireworks and does not consider the difference of the fitness values. Let take the following sorted front according to the fitness values f of 5 fireworks:
+\begin{equation}
+f_{2},f_{1},f_{4},f_{4},f_{3}
+\end{equation}
+
+The corresponding sequence numbers are 1, 2, 3, 4, 5. But, if $ f_{5} = f_{1} $ or $ f_{5}>>f_{1} $ then same sequence numbers will be generated while sorting the fireworks. The difference in transfer function values is maintained by the control parameter. In the proposed FWA-ATF, an adaptive transfer function is used by calculating the score values of the fireworks in the sorted front instead of sequence numbers without using the control parameter ܽ. First, objective function values in the sorted front are normalized in the range (0,1) using the following equation:
+
+\begin{equation}
+f_{i}^{'} = \frac{f(\vec{X_{i}}) - y_{min}}{y_{max}-y_{min}}
+\end{equation}
+
+The normalized objective function or fitness values in ascending order are ݂$ f_{1}^{''},f_{2}^{''},f_{3}^{''},...,f_{k}^{''},...,f_{N}^{''} $
+The differences of fitness value of a firework from its predecessor firework in the sorted front are calculated using the following equation:
+
+\begin{equation}
+d_{k+1} = |f_{k}^{''}-f_{k+1}^{''}|, for k = 1,2,3,...,N-1
+\end{equation}
+where $ d_{1}  = 0 $. An adaptive score value of a framework is calculated by the following equation:
+\begin{equation}
+score_{k} = k + \sum_{l=1}^{k}d_{l}, \text{for k = 1,2,3,...,N} 
+\end{equation}
+
+Instead of sorted sequence number 1, 2, 3, ..., N, the adaptive score of sorted fitness values are used in transfer function. The adaptive score $ \{ score_{1},score_{2},score_{3},...,score_{k},...,score_{N} \} $ takes the feedback i.e objective function values from the search process in an adaptive way. Therefore, the transfer function is adaptive in the proposed method and it is described by the following equation:
+\begin{equation}
+ATF(k) = \frac{1}{1+e^{score_{k}}}
+\end{equation}
+
+\subsubsection{\textit{B. Perturbation of Fireworks}}
+In the FWA and IFWABS, the same offset displacement is added to the locations of selected dimensions while generating ‘Explosion Sparks’ that leads to a bad local search or exploitation. In the proposed method, different offset displacements are calculated for each dimension as in EFWA. The offset displacement $ \nabla x_{j}  $௝is calculated using the following equation:
+\begin{equation}
+\nabla x_{j} = A_{k} \times rand(-1,1)
+\end{equation}
+
+where $ j \in [1,D] $ is the randomly selected index of dimension of ݇$ k^{th} $ firework.
 
 %The table \ref{table:3} is an example of referenced \LaTeX elements in landscape.
 %
@@ -723,7 +770,6 @@ problem:
 %
 %\end{landscape}
 
-\newpage
 
 \chapter{Results \& Discussion}
 
@@ -955,6 +1001,9 @@ In the above pages, four different algorithms (Gradient Descent, Particle Swarm 
 Y. Tan, and Y. Zhu, Firework Algorithm for Optimization, In: Y. Tan et
 al.(Eds): ICSI 2010, Part I, LNCS 6145, pp.355–364, 2010, Springer-
 Verlag Berlin Heidelberg 2010.
+
+\bibitem{paper:fwa-atf}
+Si, Tapas, and Rituparna Ghosh. "Explosion sparks generation using adaptive transfer function in firework algorithm." Signal Processing, Communication and Networking (ICSCN), 2015 3rd International Conference on. IEEE, 2015.
 
 \end{thebibliography}
 
